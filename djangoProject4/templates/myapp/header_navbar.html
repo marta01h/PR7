@@ -1,0 +1,30 @@
+{% block navbar %}
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <h1><a href="{% url 'catalog' %}" class="btn">Печатный мир</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'catalog' %}" class="btn">Каталог</a></li>
+                <li><a href="{% url 'discount' %}" class="btn">Акции</a></li>
+                <li><a href="{% url 'read' %}" class="btn">Что еще почитать?</a></li>
+                <li><a href="{% url 'school' %}" class="btn">Читай-школа</a></li>
+            </ul>
+        </nav>
+        <div class="user-menu">
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <span class="dropdown-toggle">{{ user.username }}</span>
+                    <div class="dropdown-content">
+                        <a href="{% url 'cart' %}" class="btn">Корзина</a>
+                        <a href="{% url 'logout' %}" class="btn">Выйти</a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn">Войти</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+{% endblock %}

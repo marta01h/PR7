@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="{% static 'css/catalog2.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+</head>
+<body>
+
+{% include 'myapp/header_navbar.html' %}
+
+    <div class="slider-container">
+        <input type="radio" name="slider" id="slide1" checked>
+        <input type="radio" name="slider" id="slide2">
+        <input type="radio" name="slider" id="slide3">
+
+        <div class="slides">
+            <div class="slide">
+                <img src="{% static 'images/photo_2024-10-19_20-00-17.jpg' %}" alt="The Fine Print">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/photo_2024-10-19_20-00-18.jpg' %}" alt="Another Book">
+            </div>
+            <div class="slide">
+                <img src="{% static 'images/photo_2024-10-19_20-03-48.jpg' %}" alt="Exclusive Book">
+            </div>
+        </div>
+
+        <div class="navigation">
+            <label for="slide1" class="dot"></label>
+            <label for="slide2" class="dot"></label>
+            <label for="slide3" class="dot"></label>
+        </div>
+    </div>
+
+    <main class="main-content">
+  <h2>Каталог</h2>
+        <h3>Лучшие работы</h3>
+     <div class="recommended-books">
+        {% if books %}
+            {% for book in books %}
+                <div class="book-item">
+                    {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" alt="Обложка книги">
+                    {% endif %}
+                    <h3>{{ book.title }}</h3>
+                    <p>{{ book.author }}</p>
+                    <a href="{% url 'book_detail' book.id %}" class="btn">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет доступных книг для отображения.</p>
+        {% endif %}
+    </div>
+    
+    </main>
+    <footer class="footer">
+        <p>&copy; 2024 Печатный Мир. Все права защищены.</p>
+    </footer>
+</body>
+</html>

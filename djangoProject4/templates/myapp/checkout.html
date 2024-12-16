@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа</title>
+    <link rel="stylesheet" href="{% static 'css/checkout1.css' %}">
+</head>
+<body>
+
+
+    <main>
+        <div class="checkout-page">
+            <h1>Оформление заказа</h1>
+
+            <div class="cart-items">
+                <h2>Ваши товары:</h2>
+                <ul>
+                    {% for item in cart_items %}
+                    <li>
+                        {{ item.product.name }} - {{ item.quantity }} x {{ item.product.price }} ₽
+                    </li>
+                    {% empty %}
+                    <p>Ваша корзина пуста.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="checkout-form">
+                <h3>Адрес доставки</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="address">Адрес:</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <button type="submit" class="checkout-button">Оформить заказ</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+</body>
+</html>

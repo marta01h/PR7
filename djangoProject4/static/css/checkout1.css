@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.checkout-page {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-page h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.cart-items {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.cart-items h2 {
+    font-size: 1.5rem;
+    color: #444;
+}
+
+.cart-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-items li {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.cart-items p {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.checkout-form {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form h3 {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.checkout-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.checkout-form input,
+.checkout-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.checkout-form input[type="tel"] {
+    padding-left: 15px;
+}
+
+.checkout-form select {
+    background-color: #f9f9f9;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #beaccc;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #beaccc;
+}
+
+.cart-items-empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .checkout-page {
+        padding: 15px;
+    }
+
+    .checkout-form {
+        padding: 15px;
+    }
+
+    .checkout-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

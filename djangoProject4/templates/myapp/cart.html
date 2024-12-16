@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+</head>
+<body>
+    
+
+    <main class="cart-container">
+        <h2>Ваша корзина</h2>
+        <div class="cart-items">
+            {% if cart_items %}
+                {% for item in cart_items %}
+                    <div class="cart-item">
+                        <img src="{{ item.book.cover_image.url }}" alt="{{ item.book.title }}" class="cart-item-image">
+                        <h3>{{ item.book.title }}</h3>
+                        <p>Цена: {{ item.book.price }} ₽</p>
+                        <p>Общая стоимость: {{ item.total_price }} ₽</p>
+                            <p>Количество: {{ item.quantity }}</p>
+                            <p>Общая стоимость: {{ item.total_price }} ₽</p>
+                        </div>
+                       <form method="post" action="{% url 'remove_from_cart' item.book.id %}">
+                            {% csrf_token %}
+                          <button type="submit" class="remove-button">Удалить</button>
+                            </form>
+
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Ваша корзина пуста.</p>
+            {% endif %}
+        
+        <div class="cart-summary">
+            <h3>Итог:</h3>
+            <p>Общая сумма: {{ cart_total }} ₽</p>
+            <a href="{% url 'checkout' %}" class="checkout-button">Оформить заказ</a>
+        </div>
+    </main>
+
+
+</body>
+</html>

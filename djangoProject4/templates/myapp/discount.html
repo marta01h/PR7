@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции</title>
+    <link rel="stylesheet" href="{% static 'css/mmm.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+</head>
+<body>
+
+   {% include 'myapp/header_navbar.html' %}
+   
+    <div class="container main-content">
+        <div class="card">
+            <img src="{% static 'images/photo_2024-11-06_20-02-07.jpg' %}" alt="Card Image" class="card-image">
+            <div class="timer-overlay">
+                <p>Скидка 30% на все товары. Поторопитесь!!! <span id="countdown"></span></p>
+            </div>
+        </div>
+
+        <script src="{% static 'js/countdown.js' %}"></script>
+
+        <!-- Баннеры -->
+        <div class="side-banners">
+            <div class="banner">
+                <img src="{% static 'images/icon.png' %}" alt="Книжный дозор">
+                <h4>Книжный дозор</h4>
+                <p>Делитесь впечатлениями, получайте бонусы</p>
+            </div>
+            <div class="banner">
+                <img src="{% static 'images/icon.png' %}" alt="Эксклюзивно">
+                <h4>Happy New Year!</h4>
+                <p>Невозможно пропустить!</p>
+            </div>
+            <div class="banner">
+                <img src="{% static 'images/icon.png' %}" alt="Дополнительный блок">
+                <h4>Книжный час</h4>
+                <p>Только 30 ноября с 12:00 по 18:00 30% скидка на все!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-container">
+  <div><img src="{% static 'images/IMG_8556.PNG' %}"></div>
+  <div><img src="{% static 'images/IMG_8557.PNG' %}"></div>
+
+</div>
+
+ <section class="promo-text">
+            <h2>Специальное предложение недели!</h2>
+            <p>Мы рады предложить вам лучшие скидки на наши товары! Успейте воспользоваться уникальными предложениями, которые действуют ограниченное время.</p>
+            <p>Скидка 50% на всю продукцию! Только до конца недели. Поторопитесь!</p>
+        </section>
+    <!-- Футер -->
+    <footer class="footer">
+        <p>&copy; 2024 Печатный Мир. Все права защищены.</p>
+    </footer>
+</body>
+</html>

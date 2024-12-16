@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/as.css' %}">
+        <link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+
+</head>
+
+<header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="{% url 'catalog' %}" class="btn">Печатный мир</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'catalog' %}" class="btn">Каталог</a></li>
+                    <li><a href="{% url 'discount' %}" class="btn">Акции</a></li>
+                    <li><a href="{% url 'read' %}" class="btn">Что еще почитать?</a></li>
+                    <li><a href="{% url 'school' %}" class="btn">Читай-школа</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-menu">
+                     {% if user.is_authenticated %}
+        <div class="dropdown">
+    <span class="dropdown-toggle">{{ user.username }}</span>
+    <div class="dropdown-content">
+        <a href="{% url 'logout' %}" class="btn">Корзина</a>
+         <a href="{% url 'logout' %}" class="btn">Выйти</a>
+
+    </div>
+</div>
+
+    {% else %}
+        <a href="{% url 'login' %}" class="btn">Войти</a>
+    {% endif %}
+</div>
+
+        </div>
+    </header>
+
+<body><div class="book-page">
+    <div class="book-container">
+        <div class="book-image">
+            {% if book.cover_image %}
+                <img src="{{ book.cover_image.url }}" alt="Обложка книги">
+            {% endif %}
+        </div>
+        <div class="book-info">
+            <h1>{{ book.title }}</h1>
+            <h2>Автор: {{ book.author }}</h2>
+            <p><strong>Жанр:</strong> {{ book.genre }}</p>
+            <p><strong>Описание:</strong> {{ book.description }}</p>
+            <p><strong>Цена:</strong> {{ book.price }} ₽</p>
+            <a href="{% url 'cart' %}">
+                <button class="buy-button">Купить</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+   <div class="related-books">
+    <h2>Вам может понравиться</h2>
+    <div class="books-list">
+        <div class="book-card">
+            <img src="{% static 'images/w1.jpg' %}">
+            <h3>Моя вина</h3>
+            <p>Цена: 820 ₽</p>
+        </div>
+        <div class="book-card">
+            <img src="{% static 'images/w2.jpg' %}">
+            <h3>Твоя вина</h3>
+            <p>Цена: 776 ₽</p>
+        </div>
+        <div class="book-card">
+            <img src="{% static 'images/w3.jpg' %}">
+            <h3>Наша вина</h3>
+            <p>Цена: 778 ₽</p>
+        </div>
+    </div>
+</div>
+
+</div>
+
+  <footer>
+        <div class="container">
+            <p>&copy; 2024 Печатный мир. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
